@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>@yield('titulo') - Laravel App</title>
-    
+    <title>@yield('titulo') || Instargral</title>
+
     <!-- Tailwind CSS Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
   </head>
@@ -27,12 +27,12 @@
         </li>
       @else
         <li class="mx-6">
-          <a href="{{ route('login.index') }}" class="font-semibold 
+          <a href="{{ route('login.index') }}" class="font-semibold
           hover:bg-indigo-700 py-3 bg-green-500 px-4 rounded-md">Conectarse</a>
         </li>
         <li>
           <a href="{{ route('registro.index') }}" class="font-semibold
-          border-2 border-white py-2 px-4 rounded-md hover:bg-white 
+          border-2 border-white py-2 px-4 rounded-md hover:bg-white
           hover:text-indigo-700">Registrar</a>
         </li>
       @endif
