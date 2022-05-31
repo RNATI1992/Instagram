@@ -9,4 +9,8 @@ class LoginController extends Controller
     public function conectarse(){
         return view('auth.login');
     }
+
+    public function lak(){
+
+    } 
 }

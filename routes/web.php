@@ -17,4 +17,4 @@ Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
 Route::get('/registro', [RegistroController::class, 'registrarse'])
     -> name('registro.index');
 
-'hola que tal';
+
