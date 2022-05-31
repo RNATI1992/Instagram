@@ -18,3 +18,10 @@ Route::get('/registro', [RegistroController::class, 'registrarse'])
     -> name('registro.index');
 
 
+<<<<<<< HEAD
+=======
+
+// HOLA SOY UN CAMBIO
+
+'hola que tal';
+>>>>>>> 3f83af5d139c3bda1e2caed864bff181012f2a50
