@@ -10,7 +10,13 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function lak(){
+    public function pag_inicio_usuario(Request $request){
 
-    } 
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        return redirect()->to('/');
+    }
 }
