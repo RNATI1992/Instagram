@@ -12,10 +12,21 @@ class RegistroController extends Controller
         return view('auth.registro');
     }
 
-    public function pag_inicio_usuario(){
-        $user = User::create(request(['name','surname','nick','email','password', '']));
+    public function pag_inicio_usuario(Request $request){
 
+        $request->validate([
+            'name' => 'required',
+            'surname' => 'required',
+            'nick' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required'
+        ]);
+
+
+        $user = User::create(request(['name','surname','nick','email','password', '']));
         // auth()->instagram($user);
+
         return redirect()->to('/');
     }
 }
