@@ -1,4 +1,4 @@
-@extends('layouts.app')    <!--  validado en vez app-->
+@extends('layouts.validado')    <!--  validado en vez app-->
 
 @section('titulo', 'Publicaciones')
 

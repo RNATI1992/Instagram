@@ -26,4 +26,5 @@ Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
 Route::get('/publicaciones', [PublicacionesController::class, 'pag_inicio_usuario'])
     -> name('publicaciones.index');
 
-    
+
+
