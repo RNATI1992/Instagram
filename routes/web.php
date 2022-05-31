@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PublicacionesController;
+use App\Http\Controllers\LikesController;
+use App\Http\Controllers\ComentariosController;
 
 Route::get('/', function () {
     return view('home');
@@ -16,14 +19,9 @@ Route::post('/login', [LoginController::class, 'pag_inicio_usuario'])
 
 Route::get('/registro', [RegistroController::class, 'registrarse'])
     -> name('registro.index');
-<<<<<<< HEAD
 
 Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
     -> name('register.pag_inicio_usuario');
 
-
-// HOLA SOY UN CAMBIO
-
-'hola que tal';
-=======
->>>>>>> a95a5beaa01cbe167f4621738762c03297cac108
+Route::get('/publicaciones', [PublicacionesController::class, 'pag_inicio_usuario'])
+    -> name('publicaciones.index');

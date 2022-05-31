@@ -17,6 +17,6 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        return redirect()->to('/');
+        return redirect()->to('/publicaciones');
     } 
 }
