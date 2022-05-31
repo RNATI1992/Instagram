@@ -11,17 +11,16 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'conectarse'])
     -> name('login.index');
 
-Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
-    -> name('register.pag_inicio_usuario');
+Route::post('/login', [LoginController::class, 'pag_inicio_usuario'])
+    -> name('login.pag_inicio_usuario');
 
 Route::get('/registro', [RegistroController::class, 'registrarse'])
     -> name('registro.index');
 
+Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
+    -> name('register.pag_inicio_usuario');
 
-<<<<<<< HEAD
-=======
 
 // HOLA SOY UN CAMBIO
 
 'hola que tal';
->>>>>>> 3f83af5d139c3bda1e2caed864bff181012f2a50
