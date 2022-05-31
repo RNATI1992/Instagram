@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->longText('descripcion');
+            $table->unsignedBigInteger('usu_id');
 
+            $table->foreign('usu_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
