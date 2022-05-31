@@ -9,7 +9,7 @@ use App\Http\Controllers\ComentariosController;
 
 Route::get('/', function () {
     return view('home');
-});
+}) -> name('home');
 
 Route::get('/login', [LoginController::class, 'conectarse'])
     -> name('login.index');
@@ -25,3 +25,5 @@ Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
 
 Route::get('/publicaciones', [PublicacionesController::class, 'pag_inicio_usuario'])
     -> name('publicaciones.index');
+
+    
