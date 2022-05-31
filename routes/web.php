@@ -18,4 +18,7 @@ Route::get('/registro', [RegistroController::class, 'registrarse'])
     -> name('registro.index');
 
 
+
 // HOLA SOY UN CAMBIO
+
+'hola que tal';
