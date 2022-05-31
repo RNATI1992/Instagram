@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublicacionesController extends Controller
 {
-    public function pag_inicio_usuario(){
-        $name = auth()->user()->name;
-        return view('auth.publicaciones', ['name' => $name]);
+    
+    public function conectarse(){
+        $user = Auth::user();
+        print_r($user);
+
+        return view('auth.publicaciones');
     }
 }

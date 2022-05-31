@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\VarDumper\VarDumper;
 
 class LoginController extends Controller
 {
@@ -20,12 +21,15 @@ class LoginController extends Controller
 
         $credenciales = request()->only('email', 'password');
 
+        VarDumper::dump($credenciales);
+
         if(Auth::attempt($credenciales)){
             request()->session()->regenerate();
-            return redirect()->to('/publicaciones');
-
+            return redirect()->route('publicaciones.index');
+        } else {
+            print("me cago en todo");
         }
 
-        return redirect()->to('/login');
+        //return redirect()->route('login');
     }
 }
