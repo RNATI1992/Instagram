@@ -44,7 +44,7 @@ class RegistroController extends Controller
         // auth()->instagram($user);
 
         // $usu = User::find(1);
-        // <img src="/img/perfil/{{$usu->foto_perfil}}" alt="">
+        // <img src="/img/perfil/{{ $usu->foto_perfil }}" alt="">
         return redirect()->to('/');
     }
 }

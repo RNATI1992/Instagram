@@ -27,7 +27,7 @@
         </li>
       @else
         <li class="mx-6">
-          <a href="{{ route('login.index') }}" class="font-semibold
+          <a href="{{ route('login') }}" class="font-semibold
           hover:bg-indigo-700 py-3 bg-green-500 px-4 rounded-md">Conectarse</a>
         </li>
         <li>
