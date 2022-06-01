@@ -9,7 +9,10 @@
 
  <h1 class="text-5xl text-center pt-5">Iniciar Sesión</h1>
  <p class="text-red-400 text-xs text-center mt-3"> Los campos con asterisco son obligatorios (*) </p>
-
+@if (session('success'))
+    <p class="border border-green-500 rounded-md bg-green-100 w-full
+      text-green-600 p-2 my-2">{{ session('success') }}</p>
+@endif
   <form class="mt-4" method="POST" action="">
     @csrf
 
