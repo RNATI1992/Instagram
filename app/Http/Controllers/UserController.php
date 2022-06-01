@@ -19,16 +19,18 @@ class UserController extends Controller
         $request->validate([
             'new_name' => 'required',
             'new_surname' => 'required',
-            'new_nick' => 'required|unique:users',
-            'new_password' => 'required',
-            'new_password_confirmation' => 'required|same:password'
+            'new_password' => '',
+            'new_password_confirmation' => 'same:new_password'
         ]);
 
         $usuario = User::find(Auth::id());
         $usuario->name = $request->new_name;
         $usuario->surname = $request->new_surname;
-        $usuario->nick = $request->new_nick;
-        $usuario->password = Hash::make($request->new_password);
+
+        if($request->new_password != null){
+            $usuario->password = Hash::make($request->new_password);
+        }
+
 
         if($request->hasFile("foto_perfil")){
             $foto_perfil = $request->file("foto_perfil");
@@ -41,7 +43,7 @@ class UserController extends Controller
         $usuario->save();
         $request->session()->regenerate();
 
-        return back()->with('success', 'Los datos se han actualizado');
+        return redirect()->route('publicaciones.index')->with('success', 'Los datos se han actualizado');
 
     }
 
