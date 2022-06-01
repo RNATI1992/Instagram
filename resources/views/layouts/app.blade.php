@@ -19,7 +19,7 @@
       <ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
       @if(auth()->check())
         <li class="mx-8 my-6">
-          <p class="text-xl"><b>{{ auth()->user()->name }}</b></p>
+          <h5>Bienvenido <b>{{ auth()->user()->name }}</b></h5>
         </li>
         @if(auth()->user()->foto_perfil != null)
             <li class="mx-1">
