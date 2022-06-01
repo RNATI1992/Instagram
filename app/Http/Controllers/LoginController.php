@@ -25,10 +25,11 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciales)){
             request()->session()->regenerate();
-
             return redirect()->route('publicaciones.index');
+        } else {
+            print("me cago en todo");
         }
 
-        return redirect()->route('login');
+        //return redirect()->route('login');
     }
 }
