@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegistroController extends Controller
 {
@@ -18,18 +19,20 @@ class RegistroController extends Controller
         $request->validate([
             'name' => 'required',
             'surname' => 'required',
-            'nick' => 'required',
-            'email' => 'required',
+            'nick' => 'required|unique:users',
+            'email' => 'required|unique:users',
             'password' => 'required',
-            'password_confirmation' => 'required'
+            'password_confirmation' => 'required|same:password'
         ]);
 
-        $usuario = new User();
-        $usuario->name = $request->name;
-        $usuario->surname = $request->surname;
-        $usuario->nick = $request->nick;
-        $usuario->email = $request->email;
-        $usuario->password = $request->password;
+        $usuario = new User([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'nick' => $request->nick,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+
+        ]);
 
         if($request->hasFile("foto_perfil")){
             $foto_perfil = $request->file("foto_perfil");
@@ -39,13 +42,7 @@ class RegistroController extends Controller
             $usuario->foto_perfil = $nombreImagen;
         }
         $usuario->save();
-
-        // User::create(request(['name','surname','nick','email','password','foto_perfil']));
-        // auth()->instagram($user);
-
-        // $usu = User::find(1);
-        // <img src="/img/perfil/{{ $usu->foto_perfil }}" alt="">
-        return redirect()->to('/');
+        return redirect()->route('login')->with('success', 'Registro Confirmado. Porfavor haga el Login!');
     }
 }
 

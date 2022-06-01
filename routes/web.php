@@ -27,6 +27,9 @@ Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
 Route::get('/inicio', [PublicacionesController::class, 'conectarse'])
     -> name('publicaciones.index');
 
+Route::post('/inicio', [PublicacionesController::class, 'comentar'])
+    -> name('publicaciones.pag_inicio_usuario');
+
 
     // ->middleware('auth')
 

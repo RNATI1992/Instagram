@@ -22,9 +22,9 @@ class LoginController extends Controller{
         // echo('hola');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            echo('adios');
             return redirect()->route('publicaciones.index')->with('success', 'Registro Confirmado. Porfavor haga el Login!');
         }
-        // return redirect()->route('publicaciones.index');
+        return redirect()->route('publicaciones.index');
     }
-}
+
+} 
