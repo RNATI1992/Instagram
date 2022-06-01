@@ -1,4 +1,4 @@
-@extends('layouts.validado')    <!--  validado en vez app-->
+@extends('layouts.app')    <!--  validado en vez app-->
 
 @section('titulo', 'Publicaciones')
 
@@ -9,7 +9,7 @@
 
     <h1 class="text-5xl text-center pt-5">Instagral</h1>
       <div class="izquierda ">
-        mini
+        Bienvenido {{ Auth::user()->name }}
       </div>
       <div class="centro ">
       <!-- comentarios --> medio

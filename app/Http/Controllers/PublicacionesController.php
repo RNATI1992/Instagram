@@ -7,11 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class PublicacionesController extends Controller
 {
-    
-    public function conectarse(){
-        $user = Auth::user();
-        print_r($user);
 
+    public function conectarse(){
         return view('auth.publicaciones');
     }
 }

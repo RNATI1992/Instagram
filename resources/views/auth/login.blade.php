@@ -13,7 +13,7 @@
     <p class="border border-green-500 rounded-md bg-green-100 w-full
       text-green-600 p-2 my-2">{{ session('success') }}</p>
 @endif
-  <form class="mt-4" method="POST" action="">
+  <form class="mt-4" method="POST" action="{{ route('login.pag_inicio_usuario') }}">
     @csrf
 
     <input type="email" class="border border-gray-200 rounded-md bg-gray-200 w-full

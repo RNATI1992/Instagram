@@ -8,9 +8,6 @@ use App\Http\Controllers\PublicacionesController;
 use App\Http\Controllers\LikesController;
 use App\Http\Controllers\ComentariosController;
 
-/* Route::get('/', function () {
-    return view('home');
-}) -> name('home'); */
 
 Route::get('/login', [LoginController::class, 'conectarse'])
     -> name('login');
@@ -24,6 +21,9 @@ Route::get('/registro', [RegistroController::class, 'registrarse'])
 Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
     -> name('register.pag_inicio_usuario');
 
-Route::get('/', [PublicacionesController::class, 'pag_inicio_usuario'])
+Route::get('/', [PublicacionesController::class, 'conectarse'])
     -> name('publicaciones.index')->middleware('auth');
+
+Route::get('/logout', [LoginController::class, 'logout'])
+    -> name('login.destroy');
 

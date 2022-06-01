@@ -19,17 +19,18 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        $credenciales = request()->only('email', 'password');
-
-        VarDumper::dump($credenciales);
-
-        if(Auth::attempt($credenciales)){
-            request()->session()->regenerate();
-            return redirect()->route('publicaciones.index');
-        } else {
-            print("me cago en todo");
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+            $request->session()->regenerate();
+            return redirect()->intended('/');
         }
 
-        //return redirect()->route('login');
+        return back()->withErrors('password', 'Error en el email o la contraseña!');
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

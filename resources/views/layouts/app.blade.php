@@ -19,7 +19,7 @@
       <ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
       @if(auth()->check())
         <li class="mx-8">
-          <p class="text-xl">Welcome <b>{{ auth()->user()->name }}</b></p>
+          <p class="text-xl">Bienvenido <b>{{ auth()->user()->name }}</b></p>
         </li>
         <li>
           <a href="{{ route('login.destroy') }}" class="font-bold
