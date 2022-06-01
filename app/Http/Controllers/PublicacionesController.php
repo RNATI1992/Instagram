@@ -15,7 +15,7 @@ class PublicacionesController extends Controller
         return view('auth.publicaciones');
     }
 
-    public function pag_inicio_usuario(Request $request){
+    public function create(Request $request){
 
         $request->validate([
             'titulo' => 'required',
@@ -23,22 +23,23 @@ class PublicacionesController extends Controller
             'descripcion' => 'required',
         ]);
 
-        $publicacion = new Publicaciones([
-            'titulo' => $request->nombre,
-            'descripcion' => $request->descripcion,
+        $publicacion = new Publicaciones;
+        $publicacion->nombre = $request->titulo;
+        $publicacion->descripcion = $request->descripcion;
 
-        ]);
 
         if($request->hasFile("foto")){
             $foto = $request->file("foto");
-            $nombreImagen = Str::slug($request->nick).".".$foto->guessExtension();
-            $ruta = public_path("img/perfil/");
+            $nombreImagen = Str::slug($request->titulo).".".$foto->guessExtension();
+            $ruta = public_path("img/publicacion/");
             $foto->move($ruta, $nombreImagen);
             $publicacion->foto = $nombreImagen;
         }
-        
 
+
+        $publicacion->usu_id = Auth::id();
         $publicacion->save();
+
         return redirect()->route('publicaciones.index')->with('success', 'Publicación Confirmada!');
 
     }

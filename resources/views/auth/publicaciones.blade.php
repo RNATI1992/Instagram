@@ -18,34 +18,41 @@
               </div>
           @endif
         </div>
-        <div class="h-96 w-5/6 my-4 border border-gray-200 rounded-lg shadow-lg p-5">
+        <div class="my-4 border border-gray-200 rounded-lg shadow-lg p-5">
             @if (session('success'))
-                <p class="border border-green-500 rounded-md bg-green-100 w-full
+                <p class="border border-green-500 rounded-md bg-green-100
                 text-green-600 p-2 my-2">{{ session('success') }}</p>
             @endif
-            <form class="mt-4" method="POST" action="{{ route('publicaciones.pag_inicio_usuario') }}">
-                <label class="font-bold">Título</label>
-                @error('titulo')
-                    <p class="border border-red-500 rounded-md bg-red-100 w-full
-                    text-red-600 p-2 my-2">* {{ $message }}</p>
-                @enderror
-                <input type="text" class="text-red-400 border border-gray-200 rounded-md bg-gray-200 w-full
-                text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" id="titulo" name="titulo">
+            <form class="mt-4" method="POST" action="{{ route('publicaciones.create') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="w-full">
+                    <label class="font-bold">Título</label>
+                    @error('titulo')
+                        <p class="border border-red-500 rounded-md bg-red-100 w-full
+                        text-red-600 p-2 my-2">* {{ $message }}</p>
+                    @enderror
+                    <input type="text" class="text-red-400 border border-gray-200 rounded-md bg-gray-200 w-full
+                    text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" id="titulo" name="titulo">
+                </div>
 
-                <label class="font-bold">Imagen</label>
-                @error('foto')
-                    <p class="border border-red-500 rounded-md bg-red-100 w-full
-                    text-red-600 p-2 my-2">* {{ $message }}</p>
-                @enderror
-                <input type="file" class="border border-gray-200 rounded-md bg-gray-200 w-full
-                text-lg placeholder-gray-900 p-2 my-2 focus:bg-white " id="foto" name="foto">
+                <div class="w-full">
+                    <label class="font-bold">Imagen</label>
+                    @error('foto')
+                        <p class="border border-red-500 rounded-md bg-red-100 w-full
+                        text-red-600 p-2 my-2">* {{ $message }}</p>
+                    @enderror
+                    <input type="file" class="border border-gray-200 rounded-md bg-gray-200 w-full
+                    text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" id="foto" name="foto">
+                </div>
 
-                <label class="font-bold">Descripción</label>
-                @error('descripcion')
-                    <p class="border border-red-500 rounded-md bg-red-100 w-full
-                    text-red-600 p-2 my-2">* {{ $message }}</p>
-                @enderror
-                <textarea name="descripcion" id="descripcion" class="w-full rounded-md bg-gray-200"> </textarea>
+                <div class="w-full">
+                    <label class="font-bold">Descripción</label>
+                    @error('descripcion')
+                        <p class="border border-red-500 rounded-md bg-red-100 w-full
+                        text-red-600 p-2 my-2">* {{ $message }}</p>
+                    @enderror
+                    <textarea name="descripcion" id="descripcion" class="w-full rounded-md bg-gray-200"> </textarea>
+                </div>
 
                 <button type="submit" class="rounded-md bg-indigo-500 w-full text-lg
                 text-white font-semibold p-2 my-3 hover:bg-indigo-600">Publicar</button>

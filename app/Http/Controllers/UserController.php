@@ -32,8 +32,8 @@ class UserController extends Controller
         }
 
 
-        if($request->hasFile("foto_perfil")){
-            $foto_perfil = $request->file("foto_perfil");
+        if($request->hasFile("new_foto_perfil")){
+            $foto_perfil = $request->file("new_foto_perfil");
             $nombreImagen = Str::slug($request->nick).".".$foto_perfil->guessExtension();
             $ruta = public_path("img/perfil/");
             $foto_perfil->move($ruta, $nombreImagen);
