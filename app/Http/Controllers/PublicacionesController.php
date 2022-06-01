@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 use App\Models\Publicaciones;
+use App\Models\Likes;
 use Illuminate\Support\Facades\DB;
 
 class PublicacionesController extends Controller

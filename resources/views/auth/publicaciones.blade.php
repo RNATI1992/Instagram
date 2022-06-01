@@ -69,15 +69,25 @@
                   $user = DB::table('users')->where('id', $publicacion->usu_id)->first();
                 @endphp
                 <li class="border border-gray-200 rounded-lg shadow-lg p-5 mt-7 mx-7 w-42">
-                    {{ $user->nick }}
-                    <div class="border border-black-200 rounded-lg shadow-lg pl-3 mb-2 ">
-                      <h6>{{ $publicacion->nombre }}</h6>
-                    </div>
+                    <p class="text-xl">Usuario: <span class="font-bold">{{ $user->nick }}</span></p>
+                    <h6 class="text-lg font-bold text-center">{{ $publicacion->nombre }}</h6>
+
                     <img src="img/publicacion/{{ $publicacion->foto }}" alt="No hi ha foto">
-                    {{ $publicacion->created_at }}
-                    <p> Comentario: </p>
+
+                    @php
+                        $likes = DB::table('likes')->where('publi_id', $publicacion->id);
+                        $likesCount = $likes->count();
+                    @endphp
+                    <div class="flex justify-end">
+                        <p class="mx-8 font-bold">{{ $publicacion->created_at }}</p>
+                        <p class="my-2 font-bold text-2xl w-96 text-right">{{ $likesCount }}</p>
+                        <a href="{{ url("likes/{$publicacion->id}") }}"><img src="img/logo/me-gusta.png" alt="No hi ha foto"></a>
+                    </div>
+                    <p class="my-6">Descripción: {{ $publicacion->descripcion }}</p>
+
+                    <p> Comentarios: </p>
                     <div class="border border-black-200 rounded-lg shadow-lg p-5 mt-2 mx-3">
-                      {{ $publicacion->descripcion }}
+
                     </div>
 
                 </li>
