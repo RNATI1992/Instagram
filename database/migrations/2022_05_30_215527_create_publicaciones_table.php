@@ -18,9 +18,12 @@ return new class extends Migration
             $table->string('nombre');
             $table->longText('descripcion');
             $table->string('foto');
-            $table->unsignedBigInteger('usu_id');
+            $table->unsignedBigInteger('usu_id')->nullable();
 
-            $table->foreign('usu_id')->references('id')->on('users');
+            $table->foreign('usu_id')
+                ->references('id')->on('users')
+                ->onDelete('set null');
+
             $table->timestamps();
         });
     }

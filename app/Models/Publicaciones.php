@@ -18,4 +18,11 @@ class Publicaciones extends Model
         'foto',
         'usu_id',
     ];
+
+    // Relación uno a muchos (inversa)
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+
+
 }

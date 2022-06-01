@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('usu_id');
-            $table->foreign('usu_id')->references('id')->on('users');
+            $table->unsignedBigInteger('usu_id')->nullable();
+            $table->foreign('usu_id')->references('id')->on('users')->onDelete('set null');;
 
-            $table->unsignedBigInteger('publi_id');
-            $table->foreign('publi_id')->references('id')->on('publicaciones');
+            $table->unsignedBigInteger('publi_id')->nullable();
+            $table->foreign('publi_id')->references('id')->on('publicaciones')->onDelete('set null');;
 
             $table->longText('contenido');
             $table->timestamps();
