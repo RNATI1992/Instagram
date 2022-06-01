@@ -23,7 +23,7 @@
         </li>
         @if(auth()->user()->foto_perfil != null)
             <li class="mx-8">
-                <img style="border-radius: 50%;" src="/img/perfil/{{ auth()->user()->foto_perfil }}" alt="" height="50" width="50">
+                <img class="rounded-full" src="/img/perfil/{{ auth()->user()->foto_perfil }}" alt="" height="60" width="60">
             </li>
         @else
             <li class="mx-4">
