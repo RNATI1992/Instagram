@@ -8,9 +8,8 @@ use App\Models\User;
 
 class PublicacionesController extends Controller
 {
-    
+
     public function conectarse(){
-        //Nombre dle archivo blade
         return view('auth.publicaciones');
     }
 

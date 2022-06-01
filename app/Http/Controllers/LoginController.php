@@ -18,13 +18,20 @@ class LoginController extends Controller{
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
- 
-        // echo('hola');
-        if (Auth::attempt($credentials)) {
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             $request->session()->regenerate();
-            return redirect()->route('publicaciones.index')->with('success', 'Registro Confirmado. Porfavor haga el Login!');
+            return redirect()->intended('/');
         }
-        return redirect()->route('publicaciones.index');
+
+        return back()->withErrors('password', 'Error en el email o la contraseña!');
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
 } 
