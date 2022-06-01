@@ -9,9 +9,7 @@ class PublicacionesController extends Controller
 {
     
     public function conectarse(){
-        $user = Auth::user();
-        print_r($user);
-
+        //Nombre dle archivo blade
         return view('auth.publicaciones');
     }
 }

@@ -24,6 +24,9 @@ Route::get('/registro', [RegistroController::class, 'registrarse'])
 Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
     -> name('register.pag_inicio_usuario');
 
-Route::get('/', [PublicacionesController::class, 'pag_inicio_usuario'])
-    -> name('publicaciones.index')->middleware('auth');
+Route::get('/inicio', [PublicacionesController::class, 'conectarse'])
+    -> name('publicaciones.index');
+
+
+    // ->middleware('auth')
 
