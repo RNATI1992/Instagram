@@ -63,9 +63,12 @@
 
             <ul class="justify-center">
                 @foreach ($publicaciones as $publicacion)
+                    @php
+                        $user = DB::table('users')->where('id', $publicacion->usu_id)->first();
+                    @endphp
 
                     <li class="border border-gray-200 rounded-lg shadow-lg p-5 mt-7 mx-7">
-                        {{ $publicacion->usu_id }}
+                        {{ $user->nick }}
                         {{ $publicacion->nombre }}
                         {{ $publicacion->descripcion }}
                         {{ $publicacion->foto }}

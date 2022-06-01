@@ -18,6 +18,7 @@ class PublicacionesController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
 
+
         return view('auth.publicaciones', compact('publicaciones'));
     }
 
