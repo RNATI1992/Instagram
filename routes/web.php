@@ -26,16 +26,16 @@ Route::get('/', [PublicacionesController::class, 'conectarse'])
     -> name('publicaciones.index')->middleware('auth');
 
 Route::post('/', [PublicacionesController::class, 'create'])
-    -> name('publicaciones.create');
+    -> name('publicaciones.create')->middleware('auth');
 
 Route::get('/logout', [LoginController::class, 'logout'])
-    -> name('login.destroy')->middleware('auth');;
+    -> name('login.destroy')->middleware('auth');
 
 Route::get('/perfil', [UserController::class, 'vista'])
-    -> name('perfil')->middleware('auth');;
+    -> name('perfil')->middleware('auth');
 
 Route::post('/perfil', [UserController::class, 'actualizar'])
-    -> name('perfil.actualizar');
+    -> name('perfil.actualizar')->middleware('auth');
 
 
 

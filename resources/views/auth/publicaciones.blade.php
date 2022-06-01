@@ -61,11 +61,20 @@
         <div class="h-96 w-full my-7 mx-10 border border-gray-200 rounded-lg shadow-lg p-5">
             <p class="text-2xl font-bold text-center">Listado de todas las Publicaciones</p>
 
+            <ul class="justify-center">
+                @foreach ($publicaciones as $publicacion)
 
+                    <li class="border border-gray-200 rounded-lg shadow-lg p-5 mt-7 mx-7">
+                        {{ $publicacion->usu_id }}
+                        {{ $publicacion->nombre }}
+                        {{ $publicacion->descripcion }}
+                        {{ $publicacion->foto }}
+                        {{ $publicacion->created_at }}
 
+                    </li>
 
-
-
+                @endforeach
+            </ul>
 
         </div>
 
