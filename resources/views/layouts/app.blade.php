@@ -12,7 +12,11 @@
   <body class="bg-white-100 text-gray-800">
 
     <nav class="flex bg-indigo-500 text-white">
-      <div class="w-1/2 px-12 mr-auto py-6">
+      <div class="px-5">
+        <a href="{{ route('publicaciones.index') }}"><img src="/img/logo/instargral.png" alt=""></a>
+      </div>
+
+      <div class="w-1/2 px-1 mr-auto py-7">
         <p class="text-2xl font-bold">Instargral</p>
       </div>
 
@@ -23,24 +27,21 @@
         </li>
         @if(auth()->user()->foto_perfil != null)
             <li class="mx-1">
-                <img class="rounded-full h-16 w-16 flex bg-teal-400 m-2" src="/img/perfil/{{ auth()->user()->foto_perfil }}" alt="">
+                <a href="{{ route('perfil') }}"><img class="rounded-full h-16 w-16 flex bg-teal-400 m-2" src="/img/perfil/{{ auth()->user()->foto_perfil }}" alt=""></a>
             </li>
         @else
             <li class="mx-4">
-                <img src="/img/perfil/usuario.png" alt="" height="50" width="50">
+                <a href="{{ route('perfil') }}"><img src="/img/perfil/usuario.png" alt="" height="50" width="50"></a>
+
             </li>
 
         @endif
-        <li class="mx-6 my-3">
-          <a href="{{ route('login.destroy') }}" class="font-bold
-          py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">Cerrar sesion</a>
-        </li>
       @else
-        <li class="mx-6 my-2">
+        <li class="mx-6 my-7">
           <a href="{{ route('login') }}" class="font-semibold
           hover:bg-indigo-700 py-3 bg-green-500 px-4 rounded-md">Conectarse</a>
         </li>
-        <li class="my-2">
+        <li class="my-7">
           <a href="{{ route('registro.index') }}" class="font-semibold
           border-2 border-white py-2 px-4 rounded-md hover:bg-white
           hover:text-indigo-700">Registrar</a>

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublicacionesController;
 use App\Http\Controllers\LikesController;
 use App\Http\Controllers\ComentariosController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/login', [LoginController::class, 'conectarse'])
@@ -28,5 +29,13 @@ Route::post('/', [PublicacionesController::class, 'pag_inicio_usuario'])
     -> name('publicaciones.pag_inicio_usuario');
 
 Route::get('/logout', [LoginController::class, 'logout'])
-    -> name('login.destroy');
+    -> name('login.destroy')->middleware('auth');;
+
+Route::get('/perfil', [UserController::class, 'vista'])
+    -> name('perfil')->middleware('auth');;
+
+Route::post('/perfil', [UserController::class, 'actualizar'])
+    -> name('perfil.actualizar');
+
+
 
