@@ -4,7 +4,6 @@
 
 @section('content')
 
-  <h5>Bienvenido {{ Auth::user()->name }}</h5>
     <div class="flex justify-center items-center h-screen h-full w-full ">
       {{-- <div class="p-5 w-auto bg-red border border-gray-200 rounded-lg shadow-lg"> --}}
         <div class="h-40 w-40">
