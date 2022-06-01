@@ -17,9 +17,11 @@ class PublicacionesController extends Controller
         $publicaciones = DB::table('publicaciones')
                 ->orderBy('created_at', 'desc')
                 ->get();
+                                //tabla mysql
+        $comentarios = DB::table('comentarios')
+                ->get();
 
-
-        return view('auth.publicaciones', compact('publicaciones'));
+        return view('auth.publicaciones', compact('publicaciones'), compact('comentarios'));
     }
 
     public function create(Request $request){
@@ -50,5 +52,7 @@ class PublicacionesController extends Controller
         return redirect()->route('publicaciones.index')->with('success', 'Publicación Confirmada!');
 
     }
+
+    
 
 }

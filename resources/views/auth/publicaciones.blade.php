@@ -79,7 +79,19 @@
                     <div class="border border-black-200 rounded-lg shadow-lg p-5 mt-2 mx-3">
                       {{ $publicacion->descripcion }}
                     </div>
-
+                    <form class="mt-4" method="POST" action="{{ route('comentarios.create') }}" enctype="multipart/form-data">
+                      <div class="border border-black-200 rounded-lg shadow-lg mt-2 ">
+                        <textarea name="comentario" id="comentario" class="w-full rounded-md bg-gray-200"> </textarea>
+                        @error('comentario')
+                          <p class="border border-red-500 rounded-md bg-red-100 w-full
+                          text-red-600 p-2 my-2">* {{ $message }}</p>
+                        @enderror
+                      </div>
+                      <div class="justify-items-center">
+                        <button type="submit" class="rounded-md bg-indigo-500  text-lg
+                        text-white font-semibold p-2 my-3 hover:bg-indigo-600">Publicar</button>
+                      </div>
+                    </form>
                 </li>
 
               @endforeach
