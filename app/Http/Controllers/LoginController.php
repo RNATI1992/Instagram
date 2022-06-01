@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\VarDumper\VarDumper;
+use App\Models\User;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller{
     public function conectarse(){
         return view('auth.login');
     }
 
     public function pag_inicio_usuario(Request $request){
 
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required'
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
@@ -33,4 +33,5 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
-}
+
+} 

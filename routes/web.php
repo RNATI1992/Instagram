@@ -24,6 +24,9 @@ Route::post('/registro', [RegistroController::class, 'pag_inicio_usuario'])
 Route::get('/', [PublicacionesController::class, 'conectarse'])
     -> name('publicaciones.index')->middleware('auth');
 
+Route::post('/', [PublicacionesController::class, 'pag_inicio_usuario'])
+    -> name('publicaciones.pag_inicio_usuario');
+
 Route::get('/logout', [LoginController::class, 'logout'])
     -> name('login.destroy');
 

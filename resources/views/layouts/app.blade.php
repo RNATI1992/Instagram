@@ -11,19 +11,19 @@
   </head>
   <body class="bg-white-100 text-gray-800">
 
-    <nav class="flex py-4 bg-indigo-500 text-white">
-      <div class="w-1/2 px-12 mr-auto py-2">
+    <nav class="flex bg-indigo-500 text-white">
+      <div class="w-1/2 px-12 mr-auto py-6">
         <p class="text-2xl font-bold">Instargral</p>
       </div>
 
       <ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
       @if(auth()->check())
-        <li class="mx-8 my-2">
+        <li class="mx-8 my-6">
           <p class="text-xl"><b>{{ auth()->user()->name }}</b></p>
         </li>
         @if(auth()->user()->foto_perfil != null)
-            <li class="mx-8">
-                <img class="rounded-full" src="/img/perfil/{{ auth()->user()->foto_perfil }}" alt="" height="60" width="60">
+            <li class="mx-1">
+                <img class="rounded-full h-16 w-16 flex bg-teal-400 m-2" src="/img/perfil/{{ auth()->user()->foto_perfil }}" alt="">
             </li>
         @else
             <li class="mx-4">
@@ -31,7 +31,7 @@
             </li>
 
         @endif
-        <li>
+        <li class="mx-6 my-3">
           <a href="{{ route('login.destroy') }}" class="font-bold
           py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">Cerrar sesion</a>
         </li>

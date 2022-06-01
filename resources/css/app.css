@@ -1,1 +1,8 @@
+.izquierda{
+    display: inline-block;
+    float: left;
+}
 
+.centro{
+    float:none;
+}

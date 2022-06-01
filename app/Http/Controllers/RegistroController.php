@@ -42,12 +42,6 @@ class RegistroController extends Controller
             $usuario->foto_perfil = $nombreImagen;
         }
         $usuario->save();
-
-        // User::create(request(['name','surname','nick','email','password','foto_perfil']));
-        // auth()->instagram($user);
-
-        // $usu = User::find(1);
-        // <img src="/img/perfil/{{ $usu->foto_perfil }}" alt="">
         return redirect()->route('login')->with('success', 'Registro Confirmado. Porfavor haga el Login!');
     }
 }
