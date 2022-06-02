@@ -93,9 +93,6 @@
                     <p class="my-6">Descripción: {{ $publicacion->descripcion }}</p>
 
                     <p> Comentarios: </p>
-                    <div class="border border-black-200 rounded-lg shadow-lg p-5 mt-2 mx-3">
-
-                    </div>
                     <form class="mt-4" method="POST" action="{{ url("comentarios/{$publicacion->id}"),  }}" enctype="multipart/form-data">
                       @csrf {{-- @csrf  importante si no la pagin expira--}}
                       <div class="border border-black-200 rounded-lg shadow-lg mt-2 ">
@@ -110,17 +107,28 @@
                         text-white font-semibold p-2 my-3 hover:bg-indigo-600">Publicar</button>
                       </div>
                     </form>
-                    @php
-                      $comentarios = DB::table('comentarios')->where('publi_id', $publicacion->id);
-                    @endphp
-                    @foreach ($comentarios as $comentario)
-                      {{$comentario->contenido}}
-                      {{$comentario->created_at}}
-                      {{$comentario->usu_id}}
-                      
 
-                      
+                    @foreach ($comentarios as $comentario)
+                        @php
+                            $miComentario = DB::table('comentarios')->where('publi_id', $publicacion->id)->where('id', $comentario->id);
+                            $miComentarioCount = $miComentario->count();
+
+                            $user = DB::table('users')->where('id', $comentario->usu_id)->first();
+                        @endphp
+
+                        @if ($miComentarioCount > 0)
+                            <div class="border border-black-200 rounded-lg shadow-lg mt-2 p-5">
+                                <p class="">Usuario: <span class="font-bold">{{ $user->nick }}</span></p>
+                                <p>{{ $comentario->contenido }}</p>
+                                <p class="font-bold">{{ $comentario->created_at }}</p>
+
+                            </div>
+
+                        @endif
+
                     @endforeach
+
+
                 </li>
 
               @endforeach

@@ -19,7 +19,9 @@ class PublicacionesController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-        return view('auth.publicaciones', compact('publicaciones'));
+        $comentarios = DB::table('comentarios')->get();
+
+        return view('auth.publicaciones', compact('publicaciones', 'comentarios'));
     }
 
     public function create(Request $request){
@@ -57,9 +59,11 @@ class PublicacionesController extends Controller
                 ->where('usu_id', Auth::id())
                 ->orderBy('created_at', 'desc')
                 ->get();
+        $comentarios = DB::table('comentarios')->get();
 
 
-        return view('auth.home', compact('publicaciones'));
+
+        return view('auth.home', compact('publicaciones', 'comentarios'));
     }
 
 }
