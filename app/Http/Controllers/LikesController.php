@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class LikesController extends Controller
 {
     public function create($id){
-        $likes = DB::table('likes')->where('usu_id', Auth::id());
+        $likes = DB::table('likes')->where('usu_id', Auth::id())->where('publi_id', $id);
         $likesCount = $likes->count();
 
         if($likesCount != 0){
@@ -24,7 +24,6 @@ class LikesController extends Controller
 
             $like->save();
         }
-
 
 
         return redirect()->route('publicaciones.index');

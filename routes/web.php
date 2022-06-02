@@ -43,3 +43,7 @@ Route::post('/comentarios/{id}', [ComentariosController::class, 'create_coments'
 
 Route::get('/likes/{id}', [LikesController::class, 'create'])
     -> name('likes.create')->middleware('auth');
+
+Route::get('/home', [PublicacionesController::class, 'mis_publicaciones'])
+    -> name('publicaciones.home')->middleware('auth');
+
