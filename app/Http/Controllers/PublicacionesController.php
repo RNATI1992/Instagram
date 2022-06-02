@@ -52,4 +52,14 @@ class PublicacionesController extends Controller
 
     }
 
+    public function mis_publicaciones(){
+        $publicaciones = DB::table('publicaciones')
+                ->where('usu_id', Auth::id())
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+
+        return view('auth.home', compact('publicaciones'));
+    }
+
 }

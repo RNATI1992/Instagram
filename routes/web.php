@@ -40,3 +40,6 @@ Route::post('/perfil', [UserController::class, 'actualizar'])
 Route::get('/likes/{id}', [LikesController::class, 'create'])
     -> name('likes.create')->middleware('auth');
 
+Route::get('/home', [PublicacionesController::class, 'mis_publicaciones'])
+    -> name('publicaciones.home')->middleware('auth');
+

@@ -23,7 +23,7 @@
       <ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
       @if(auth()->check())
         <li class="mx-8 my-6">
-          <a href="{{ route('publicaciones.index') }}"><h5><b>Home</b></h5></a>
+          <a href="{{ route('publicaciones.home') }}"><h5><b>Home</b></h5></a>
         </li>
         <li class="mx-8 my-6">
           <h5>Bienvenido <b>{{ auth()->user()->name }}</b></h5>
