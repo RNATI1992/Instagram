@@ -78,10 +78,17 @@
                         $likes = DB::table('likes')->where('publi_id', $publicacion->id);
                         $likesCount = $likes->count();
                     @endphp
-                    <div class="flex justify-end">
-                        <p class="mx-8 font-bold">{{ $publicacion->created_at }}</p>
-                        <p class="my-2 font-bold text-2xl w-96 text-right">{{ $likesCount }}</p>
-                        <a href="{{ url("likes/{$publicacion->id}") }}"><img src="img/logo/me-gusta.png" alt="No hi ha foto"></a>
+                    <div class="flex place-content-between">
+                      <div>
+                          <p class="font-bold">{{ $publicacion->created_at }}</p>
+                      </div>
+                      <div class="flex">
+                          <p class="font-bold text-2xl">{{ $likesCount }}</p>
+                          <a href="{{ url("likes/{$publicacion->id}") }}"><img src="img/logo/me-gusta.png" alt="No hi ha foto" height="30px" width="30px"></a>
+                      </div>
+                      {{-- <div>
+                          <a href="{{ url("likes/{$publicacion->id}") }}"><img src="img/logo/me-gusta.png" alt="No hi ha foto"></a>
+                      </div> --}}
                     </div>
                     <p class="my-6">Descripción: {{ $publicacion->descripcion }}</p>
 
@@ -89,7 +96,8 @@
                     <div class="border border-black-200 rounded-lg shadow-lg p-5 mt-2 mx-3">
 
                     </div>
-                    <form class="mt-4" method="POST" action="{{ route('comentarios.create') }}" enctype="multipart/form-data">
+                    <form class="mt-4" method="POST" action="{{ url("comentarios/{$publicacion->id}"),  }}" enctype="multipart/form-data">
+                      @csrf {{-- @csrf  importante si no la pagin expira--}}
                       <div class="border border-black-200 rounded-lg shadow-lg mt-2 ">
                         <textarea name="comentario" id="comentario" class="w-full rounded-md bg-gray-200"> </textarea>
                         @error('comentario')
@@ -102,6 +110,17 @@
                         text-white font-semibold p-2 my-3 hover:bg-indigo-600">Publicar</button>
                       </div>
                     </form>
+                    @php
+                      $comentarios = DB::table('comentarios')->where('publi_id', $publicacion->id);
+                    @endphp
+                    @foreach ($comentarios as $comentario)
+                      {{$comentario->contenido}}
+                      {{$comentario->created_at}}
+                      {{$comentario->usu_id}}
+                      
+
+                      
+                    @endforeach
                 </li>
 
               @endforeach

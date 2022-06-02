@@ -37,6 +37,9 @@ Route::get('/perfil', [UserController::class, 'vista'])
 Route::post('/perfil', [UserController::class, 'actualizar'])
     -> name('perfil.actualizar')->middleware('auth');
 
+Route::post('/comentarios/{id}', [ComentariosController::class, 'create_coments'])
+    -> name('comentarios.create')->middleware('auth');
+
+
 Route::get('/likes/{id}', [LikesController::class, 'create'])
     -> name('likes.create')->middleware('auth');
-

@@ -18,11 +18,8 @@ class PublicacionesController extends Controller
         $publicaciones = DB::table('publicaciones')
                 ->orderBy('created_at', 'desc')
                 ->get();
-                                //tabla mysql
-        $comentarios = DB::table('comentarios')
-                ->get();
 
-        return view('auth.publicaciones', compact('publicaciones'), compact('comentarios'));
+        return view('auth.publicaciones', compact('publicaciones'));
     }
 
     public function create(Request $request){
@@ -34,6 +31,7 @@ class PublicacionesController extends Controller
         ]);
 
         $publicacion = new Publicaciones;
+                                //request mas nombre del formulario
         $publicacion->nombre = $request->titulo;
         $publicacion->descripcion = $request->descripcion;
 
